@@ -4,10 +4,9 @@ const cookieParser = require("cookie-parser")
 
 const path = require("path")
 
-module.exports = (server) => {
-  server.use(logger("dev"))
-
-  server.use(express.json())
-  server.use(express.urlencoded({ extended: false }))
-  server.use(cookieParser())
+module.exports = (app) => {
+  app.use(logger("dev"))
+  app.use(cookieParser())
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: true }))
 }

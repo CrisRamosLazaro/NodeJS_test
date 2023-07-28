@@ -1,13 +1,18 @@
+require('dotenv').config()
+
+require("./db")
+
 const express = require('express')
-const sessionConfig = require('./config/session.config')
 const app = express()
+
+const sessionConfig = require('./config/session.config')
+const appConfig = require('./config/index')
+
+sessionConfig(app)
+appConfig(app)
 
 const router = require('./routes/routes')
 
-sessionConfig(app)
-
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
 
 app.use(router)
 
